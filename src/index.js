@@ -12,17 +12,11 @@ const isHex = val => val.toString().slice(0, 2) === '0x'
 
 /** Encodes a values in hex and adds padding to the given size if needed. Curried args. */
 const encodeWithPadding = size => value => {
-  // non-hex string
-  if (typeof value === 'string' && !isHex(value)) {
-    return web3.toHex(value)
-  }
-  // numbers, big numbers, and hex strings
-  else {
-    const argString = typeof value === 'number'
-      ? value.toString(16)
-      : web3.toHex(value).slice(2)
-    return leftPad(argString, size / HEX_CHAR_SIZE, 0)
-  }
+  return typeof value === 'string' && !isHex(value)
+    // non-hex string
+    ? web3.toHex(value)
+    // numbers, big numbers, and hex strings
+    : leftPad(web3.toHex(value).slice(2), size / HEX_CHAR_SIZE, 0)
 }
 
 /** Hashes one or more arguments, using a default size for numbers. */
