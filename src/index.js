@@ -2,14 +2,15 @@ import Web3 from 'web3'
 import leftPad from 'left-pad'
 const web3 = new Web3()
 
-const stripHex = val => val.slice(0, 2) === '0x' ? val.slice(2) : val
+const isHex = val => val.toString().slice(0, 2) === '0x'
 
 export default (...args) => {
   const paddedArgs = args.map(arg => {
-    if (typeof arg === 'string') {
-      const argString = stripHex(arg.toString())
-      return web3.toHex(argString)
+    // non-hex string
+    if (typeof arg === 'string' && !isHex(arg)) {
+      return web3.toHex(arg)
     }
+    // numbers, big numbers, and hex strings
     else {
       const argString = typeof arg === 'number'
         ? arg.toString(16)
