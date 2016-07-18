@@ -1,5 +1,6 @@
 import * as chai from 'chai'
 import sha3 from '../src/index.js'
+import { sha3withsize } from '../src/index.js'
 import BigNumber from 'bignumber.js'
 const should = chai.should()
 
@@ -22,5 +23,9 @@ describe('solidity-sha3', () => {
 
   it('should hash multiple arguments', () => {
     sha3('a', 1).should.equal('0xb5cafab5b83d18303877bb912b2d66ca18ab7390cfd9be8a2e66cc5096e0ea02')
+  })
+
+  it('should hash a value of a specific size', () => {
+    sha3withsize(1, 32).should.equal('0x51f81bcdfc324a0dff2b5bec9d92e21cbebc4d5e29d3a3d30de3e03fbeab8d7f')
   })
 })
