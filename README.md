@@ -2,7 +2,11 @@
 [![npm version](https://img.shields.io/npm/v/solidity-sha3.svg)](https://npmjs.org/package/solidity-sha3)
 [![Build Status](https://travis-ci.org/raineorshine/solidity-sha3.svg?branch=master)](https://travis-ci.org/raineorshine/solidity-sha3)
 
-Solidity sha3 in Javascript
+`web3.sha3` doesn't always match the behavior of `sha3` in Solidity. This one does.
+
+- Hashes integers as `uint256`
+- Hashes tightly-packed arguments
+- Supports hex strings and BigNumber instances
 
 ## Install
 
