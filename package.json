@@ -12,6 +12,7 @@
   "engines": {
     "node": ">=0.12.0"
   },
+  "main": "dist",
   "scripts": {
     "test": "mocha --compilers js:babel-register",
     "build": "babel -d dist src",
