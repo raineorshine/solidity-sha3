@@ -17,6 +17,14 @@ describe('solidity-sha3', () => {
     sha3(1).should.equal('0xb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf6')
   })
 
+  it('should hash negative numbers as int256', () => {
+    sha3(-1).should.equal('0xa9c584056064687e149968cbab758a3376d22aedc6a55823d1b3ecbee81b8fb9')
+  })
+
+  it('should hash negative BigNumbers', () => {
+    sha3(new BigNumber('-1')).should.equal('0xa9c584056064687e149968cbab758a3376d22aedc6a55823d1b3ecbee81b8fb9')
+  })
+
   it('should hash a BigNumber', () => {
     sha3(new BigNumber('100')).should.equal('0x26700e13983fefbd9cf16da2ed70fa5c6798ac55062a4803121a869731e308d2')
   })

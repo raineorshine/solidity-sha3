@@ -16,7 +16,7 @@ const encodeWithPadding = size => value => {
     // non-hex string
     ? web3.toHex(value)
     // numbers, big numbers, and hex strings
-    : leftPad(web3.toHex(value).slice(2), size / HEX_CHAR_SIZE, 0)
+    : leftPad(web3.toHex(value >>> 0).slice(2), size / HEX_CHAR_SIZE, value < 0 ? 'F' : '0')
 }
 
 /** Hashes one or more arguments, using a default size for numbers. */
