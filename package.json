@@ -1,6 +1,6 @@
 {
   "name": "solidity-sha3",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Solidity sha3 in Javascript",
   "license": "ISC",
   "repository": "https://github.com/raineorshine/solidity-sha3",
