@@ -10,13 +10,18 @@ const DEFAULT_SIZE = 256
 
 const isHex = val => val.toString().slice(0, 2) === '0x'
 
-/** Encodes a values in hex and adds padding to the given size if needed. Curried args. */
+/** Encodes a value in hex and adds padding to the given size if needed. Tries to determine whether it should be encoded as a number or string. Curried args. */
 const encodeWithPadding = size => value => {
   return typeof value === 'string' && !isHex(value)
     // non-hex string
     ? web3.toHex(value)
     // numbers, big numbers, and hex strings
-    : leftPad(web3.toHex(value >>> 0).slice(2), size / HEX_CHAR_SIZE, value < 0 ? 'F' : '0')
+    : encodeNum(size)(value)
+}
+
+/** Encodes a number in hex and adds padding to the given size if needed. Curried args. */
+const encodeNum = size => value => {
+  return leftPad(web3.toHex(value < 0 ? value >>> 0 : value).slice(2), size / HEX_CHAR_SIZE, value < 0 ? 'F' : '0')
 }
 
 /** Hashes one or more arguments, using a default size for numbers. */
@@ -28,5 +33,10 @@ export default (...args) => {
 /** Hashes a single value at the given size. */
 export const sha3withsize = (value, size) => {
   const paddedArgs = encodeWithPadding(size)(value)
+  return web3.sha3(paddedArgs, { encoding: 'hex' })
+}
+
+export const sha3num = (value, size = DEFAULT_SIZE) => {
+  const paddedArgs = encodeNum(size)(value)
   return web3.sha3(paddedArgs, { encoding: 'hex' })
 }

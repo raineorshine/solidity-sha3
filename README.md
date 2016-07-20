@@ -39,6 +39,18 @@ sha3withsize(1, 32) // 0x51f81bcdfc324a0dff2b5bec9d92e21cbebc4d5e29d3a3d30de3e03
 sha3withsize(1, 8) // 0x5fe7f977e71dba2ea1a68e21057beebb9be2ac30c6410aa38d4f3fbe41dcffd2
 ```
 
+Be aware that strings will be converted into hex by default. You can use `sha3num` to explicitly pad and hash a string as a number. This is useful for Wei that is not a BigNumber instance:
+
+```js
+import { sha3num } from 'solidity-sha3'
+
+// same as sha3(uint(100 ether)) in Solidity
+sha3num(web3.toWei(100)) // c7cc234d21c9cfbd4632749fd77669e7ae72f5241ce5895e410c45185a469273
+
+// otherwise, it would convert the value '100000000000000000000' to '0x56bc75e2d63100000' and then hash that
+sha3(web3.toWei(100)) // 0x44bc2093d8a26b279e2eecbfdcb9cc0b960c2141b83a29dce25f2a18c2653bfa
+```
+
 ## License
 
 ISC © [Raine Revere](https://github.com/raineorshine)

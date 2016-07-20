@@ -1,8 +1,11 @@
 import * as chai from 'chai'
 import sha3 from '../src/index.js'
-import { sha3withsize } from '../src/index.js'
+import { sha3num, sha3withsize } from '../src/index.js'
 import BigNumber from 'bignumber.js'
+import Web3 from 'web3'
+
 const should = chai.should()
+const web3 = new Web3()
 
 describe('solidity-sha3', () => {
   it('should hash a string', () => {
@@ -36,5 +39,9 @@ describe('solidity-sha3', () => {
   it('should hash a value of a specific size', () => {
     sha3withsize(1, 8).should.equal('0x5fe7f977e71dba2ea1a68e21057beebb9be2ac30c6410aa38d4f3fbe41dcffd2')
     sha3withsize(1, 32).should.equal('0x51f81bcdfc324a0dff2b5bec9d92e21cbebc4d5e29d3a3d30de3e03fbeab8d7f')
+  })
+
+  it('should hash a number stored in a string', () => {
+    sha3num(web3.toWei('100')).should.equal('0xc7cc234d21c9cfbd4632749fd77669e7ae72f5241ce5895e410c45185a469273')
   })
 })
