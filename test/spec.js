@@ -12,8 +12,8 @@ describe('solidity-sha3', () => {
     sha3('a').should.equal('0x3ac225168df54212a25c1c01fd35bebfea408fdac2e31ddd6f80a4bbf9a5f1cb')
   })
 
-  it('should hash a hex string', () => {
-    sha3('0x0a').should.equal('0xc65a7bb8d6351c1cf70c95a316cc6a92839c986682d98bc35f958f4883f9d2a8')
+  it('should hash a hex string without padding', () => {
+    sha3('0x0a').should.equal('0x0ef9d8f8804d174666011a394cab7901679a8944d24249fd148a6a36071151f8')
   })
 
   it('should hash a number as uint256', () => {

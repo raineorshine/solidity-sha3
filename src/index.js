@@ -8,11 +8,9 @@ const HEX_CHAR_SIZE = 4
 // the size to hash an integer if not explicity provided
 const DEFAULT_SIZE = 256
 
-const isHex = val => val.toString().slice(0, 2) === '0x'
-
 /** Encodes a value in hex and adds padding to the given size if needed. Tries to determine whether it should be encoded as a number or string. Curried args. */
 const encodeWithPadding = size => value => {
-  return typeof value === 'string' && !isHex(value)
+  return typeof value === 'string'
     // non-hex string
     ? web3.toHex(value)
     // numbers, big numbers, and hex strings
