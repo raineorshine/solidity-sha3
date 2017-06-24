@@ -36,6 +36,6 @@
     "babel-preset-es2015": "*",
     "babel-register": "*",
     "left-pad": "^1.1.1",
-    "web3": "^0.16.0"
+    "web3": "^0.19.1"
   }
 }
