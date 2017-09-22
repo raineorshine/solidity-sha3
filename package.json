@@ -16,7 +16,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel-register",
     "build": "babel -d dist src",
-    "postinstall": "npm run build",
+    "prepublish": "npm run build",
     "watch": "nodemon -w src -w test -x \"npm test\""
   },
   "keywords": [
@@ -29,12 +29,12 @@
   "devDependencies": {
     "bignumber.js": "^2.4.0",
     "chai": "*",
-    "mocha": "*"
-  },
-  "dependencies": {
+    "mocha": "*",
     "babel-cli": "*",
     "babel-preset-es2015": "*",
-    "babel-register": "*",
+    "babel-register": "*"
+  },
+  "dependencies": {
     "left-pad": "^1.1.1",
     "web3": "^0.16.0"
   }
