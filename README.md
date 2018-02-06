@@ -1,3 +1,20 @@
+## DEPRECATED - Recommend using [web3-utils](https://www.npmjs.com/package/web3-utils)
+
+```js
+const web3Utils = require('web3-utils')
+const hash = web3Utils.soliditySha3(
+    {
+      type: 'uint',
+      value: 100
+    },
+    {
+      type: 'addres',
+      value: '0x437f27592ddbf363bb1a30ee535c7f5cd431a8c9'
+    },
+    ...
+)
+```
+
 # solidity-sha3
 [![npm version](https://img.shields.io/npm/v/solidity-sha3.svg)](https://npmjs.org/package/solidity-sha3)
 [![Build Status](https://travis-ci.org/raineorshine/solidity-sha3.svg?branch=master)](https://travis-ci.org/raineorshine/solidity-sha3)
