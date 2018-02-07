@@ -12,7 +12,7 @@ const DEFAULT_SIZE = 256
 const encodeWithPadding = size => value => {
   return typeof value === 'string'
     // non-hex string
-    ? web3.toHex(value)
+    ? web3.toHex(value).slice(2)
     // numbers, big numbers, and hex strings
     : encodeNum(size)(value)
 }
