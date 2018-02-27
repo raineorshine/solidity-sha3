@@ -1,6 +1,6 @@
 {
   "name": "solidity-sha3",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Solidity sha3 in Javascript",
   "license": "ISC",
   "repository": "https://github.com/raineorshine/solidity-sha3",
@@ -36,6 +36,6 @@
     "babel-preset-es2015": "*",
     "babel-register": "*",
     "left-pad": "^1.1.1",
-    "web3": "^0.16.0"
+    "web3": "^0.19.1"
   }
 }
